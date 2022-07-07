@@ -1,0 +1,45 @@
+/*dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        maven { url 'http://localhost:8085/nexus/content/repositories/mavenlocal/'
+            allowInsecureProtocol = true
+        }
+
+        mavenCentral()
+        google()
+        maven { url 'https://www.jitpack.io' }
+        gradlePluginPortal()
+        maven { url 'https://developer.huawei.com/repo/' }
+        maven {
+            url 'https://maven.fabric.io/public'
+        }
+
+//        mavenCentral()
+//        gradlePluginPortal()
+//        maven { url 'https://www.jitpack.io' }
+//        google()
+//
+//        maven {
+//            url "https://schemas.android.com/sdk/android/repo/repository2/01"
+//
+//        }
+//        maven {
+//            url "https://plugins.gradle.org/m2/"
+//        }
+//        maven { url 'https://www.jitpack.io' }
+//
+//        maven {
+//            // (mp) remove when available on maven center
+//            url "https://maven.pkg.jetbrains.space/public/p/kotlinx-html/maven"
+//            content { includeGroup "org.jetbrains.kotlinx" }
+//        }
+//            flatDir {
+//                dirs "${rootDir}/app/libs, ${rootDir}/aars"
+//            }
+//
+//    }
+//
+//}
+*/
+rootProject.name = "gofer"
+include ':app'

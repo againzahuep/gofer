@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "69477776659",
+    "firebase_url": "https://gofer-254606.firebaseio.com",
+    "project_id": "gofer-254606",
+    "storage_bucket": "gofer-254606.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:69477776659:android:ca961071eae9709b28aee6",
+        "android_client_info": {
+          "package_name": "com.couplace.gofer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "69477776659-sml00ebu3er93dvjosio0oatsl143g7j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.couplace.gofer",
+            "certificate_hash": "695d50801bcb79ba02363422f46fd3d8adc8014d"
+          }
+        },
+        {
+          "client_id": "69477776659-8ovgnf27bq8bh1f7li5m24v2s58gabc4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEBl_QYtDWOFNbbpFjPNQRKTIt8zy689k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "69477776659-8ovgnf27bq8bh1f7li5m24v2s58gabc4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

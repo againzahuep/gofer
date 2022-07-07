@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="24dp">
+
+    <ScrollView
+        android:id="@+id/login_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".auth.FacebookLoginActivity">
+
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="24dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="16dp"
+          android:background="@color/white"
+          android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.Guideline
+              android:id="@+id/guideline_vertical_start"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              app:layout_constraintGuide_percent="0.04" />
+
+            <androidx.constraintlayout.widget.Guideline
+              android:id="@+id/guideline_vertical_end"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              app:layout_constraintGuide_percent="0.96" />
+
+            <ImageView
+              android:id="@+id/agenge"
+              android:layout_width="@dimen/span124"
+              android:layout_height="@dimen/span64"
+              android:layout_marginTop="@dimen/span84"
+              android:contentDescription="@null"
+              android:background="@color/black"
+              android:scaleType="centerInside"
+              app:layout_constraintEnd_toEndOf="@+id/guideline_vertical_end"
+              app:layout_constraintStart_toStartOf="@+id/guideline_vertical_start"
+              app:layout_constraintTop_toTopOf="parent"
+              app:srcCompat="@drawable/agence" />
+
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/facebook_login_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:height="58dp"
+                android:layout_marginTop="160dp"
+                android:background="@color/facebook_blue"
+                app:layout_constraintEnd_toEndOf="@+id/agenge"
+                app:layout_constraintStart_toStartOf="@+id/agenge"
+                app:layout_constraintTop_toTopOf="@+id/agenge"
+                android:text="@string/facebook_log_in_button"
+                android:textColor="@color/white"/>
+
+            <Button
+                android:id="@+id/signin_google_button"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="240dp"
+                android:background="@color/google_blue"
+                android:text="@string/continue_with_google"
+                app:layout_constraintEnd_toEndOf="@+id/agenge"
+                app:layout_constraintStart_toStartOf="@+id/agenge"
+                app:layout_constraintTop_toTopOf="@+id/agenge" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/outer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="80dp"
+                android:text="Regístrarse con nosotros"
+                android:textSize="16sp"
+                android:textColor="@color/quantum_googred400"
+                tools:ignore="HardcodedText,SelectableText"
+                app:layout_constraintEnd_toEndOf="@+id/signin_google_button"
+                app:layout_constraintStart_toStartOf="@+id/signin_google_button"
+                app:layout_constraintTop_toTopOf="@+id/signin_google_button" />
+
+            <com.google.android.material.textfield.TextInputEditText
+              android:id="@+id/email"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:hint="@string/hint_email"
+              android:inputType="textEmailAddress"
+                android:layout_marginTop="120dp"
+                app:layout_constraintEnd_toEndOf="@+id/signin_google_button"
+                app:layout_constraintStart_toStartOf="@+id/signin_google_button"
+                app:layout_constraintTop_toTopOf="@+id/signin_google_button"
+              android:maxLines="1"/>
+
+            <com.google.android.material.textfield.TextInputEditText
+              android:id="@+id/password"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:hint="@string/password"
+              android:imeOptions="actionUnspecified"
+              android:inputType="textPassword"
+                android:layout_marginTop="170dp"
+                app:layout_constraintEnd_toEndOf="@+id/signin_google_button"
+                app:layout_constraintStart_toStartOf="@+id/signin_google_button"
+                app:layout_constraintTop_toTopOf="@+id/signin_google_button"
+              android:maxLines="1"/>
+
+            <Button
+              android:id="@+id/email_sign_in_button"
+              style="?android:textAppearanceSmall"
+              android:color="@color/yellow"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:height="58dp"
+              android:text="@string/text_sign_in"
+              android:textColor="@color/white"
+              android:textStyle="bold"
+                android:background="#0A6AFF"
+                android:layout_marginTop="230dp"
+                app:layout_constraintEnd_toEndOf="@+id/signin_google_button"
+                app:layout_constraintStart_toStartOf="@+id/signin_google_button"
+                app:layout_constraintTop_toTopOf="@+id/signin_google_button"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/forgot_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="70dp"
+                android:textColorHighlight="@color/colorPrimary"
+                android:text="@string/textview_forgot_password"
+                android:textSize="15sp"
+                android:textColor="#777777"
+                tools:ignore="HardcodedText,SelectableText"
+                app:layout_constraintEnd_toEndOf="@+id/email_sign_in_button"
+                app:layout_constraintStart_toStartOf="@+id/email_sign_in_button"
+                app:layout_constraintTop_toTopOf="@+id/email_sign_in_button" />
+
+            <ProgressBar
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.AppCompat.ProgressBar"
+                android:layout_centerInParent="true"
+                android:id="@+id/progress_bar"
+                android:visibility="gone"
+                android:elevation="20dp"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
+

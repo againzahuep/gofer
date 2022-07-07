@@ -1,0 +1,147 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+package="com.couplace.gofer">
+
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-permission android:name="android.permission.INTERNET" />
+
+
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+<!-- Required for foreground services on P+. -->
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+<uses-feature
+    android:glEsVersion="0x00020000"
+    android:required="false" />
+<uses-feature
+    android:name="android.hardware.telephony"
+    android:required="false" />
+<uses-feature
+    android:name="android.hardware.wifi"
+    android:required="false" />
+<uses-feature
+    android:name="android.hardware.location.gps"
+    android:required="false" />
+<uses-feature
+    android:name="android.hardware.location.network"
+    android:required="false" />
+<uses-feature
+    android:name="android.hardware.location"
+    android:required="false" />
+
+<application
+    android:usesCleartextTraffic="true"
+    android:name=".App"
+    android:hardwareAccelerated="true"
+    android:largeHeap="true"
+    tools:replace="android:supportsRtl"
+    android:requestLegacyExternalStorage="true"
+    android:windowSoftInputMode="adjustResize"
+    android:allowAudioPlaybackCapture="true"
+    android:icon="@drawable/logo"
+    android:label="@string/app_name"
+    android:roundIcon="@drawable/logo"
+    android:supportsRtl="true"
+    android:theme="@style/Theme.Ecommerce"
+    android:shell="true"
+    tools:targetApi="q"
+    android:allowBackup="true">
+
+    <uses-library
+        android:name="org.apache.http.legacy"
+        android:required="false" />
+    <uses-library
+        android:name="com.google.android.maps"
+        android:required="false" />
+
+
+    <meta-data
+        android:name="google_analytics_adid_collection_enabled"
+        android:value="false" />
+
+    <meta-data
+        android:name="com.google.android.gms.version"
+        android:value="@integer/google_play_services_version" /> <!-- The API key for Google Maps-based APIs. -->
+    <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="@string/google_maps_api_key" />
+
+
+    <meta-data
+        android:name="com.facebook.sdk.ApplicationId"
+        android:value="@string/facebook_app_id"
+        tools:replace="android:value" />
+    <meta-data
+        android:name="com.facebook.sdk.ClientToken"
+        android:value="@string/facebook_client_token"
+        tools:replace="android:value" />
+
+    <activity
+        android:name="com.couplace.gofer.splash.SplashActivity"
+        android:exported="true"
+        tools:node="merge"
+        android:screenOrientation="fullSensor"
+        android:clearTaskOnLaunch="true"
+        android:launchMode="singleTop"
+        android:vmSafeMode="true"
+        tools:ignore="GoogleAppIndexingWarning,UnusedAttribute"
+        android:theme="@style/AppTheme.NoActionBar">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+    <activity
+        android:name="com.couplace.gofer.product.ProductActivity"
+        android:exported="false"
+        tools:node="merge"
+        android:windowSoftInputMode="adjustPan"
+        android:screenOrientation="fullSensor">
+        <nav-graph android:value="@navigation/navigation_graph" />
+    </activity>
+
+    <activity
+        android:name="com.facebook.FacebookActivity"
+        android:exported="true"
+        tools:node="merge"
+        android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation" />
+    <activity
+        android:name="com.facebook.CustomTabActivity"
+        android:exported="true"
+        tools:node="merge">
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW" />
+
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+
+            <data android:scheme="@string/fb_login_protocol_scheme" />
+        </intent-filter>
+    </activity>
+
+    <activity
+        android:name=".auth.GoogleSignInActivity"
+        android:exported="false"
+        tools:node="merge"
+        android:windowSoftInputMode="adjustPan"
+        android:screenOrientation="fullSensor" />
+
+    <activity
+        android:name=".auth.FacebookLoginActivity"
+        android:exported="false"
+        tools:node="merge"
+        android:windowSoftInputMode="adjustPan"
+        android:screenOrientation="fullSensor" />
+
+    <service
+        android:name=".services.ForegroundOnlyLocationService"
+        android:enabled="true"
+        android:exported="false"
+        android:foregroundServiceType="location" />
+
+</application>
+</manifest>
+
