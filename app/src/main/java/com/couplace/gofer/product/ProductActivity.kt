@@ -283,6 +283,7 @@ class ProductActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
                             override fun run() {
                                 progressIndicator.hide()
                                 populateList(it)
+                                productLayoutManager.scrollToPosition((mLayoutManager as GridLayoutManager).findLastVisibleItemPosition())
                                 productListAdapter.notifyItemRangeInserted(page,page*10)
                             }
                         })
