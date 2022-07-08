@@ -25,6 +25,7 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.*
 import com.couplace.gofer.R
 import com.couplace.gofer.auth.FacebookLoginActivity
+import com.couplace.gofer.decorator.EdgeToEdge
 import com.couplace.gofer.decorator.FixedMarginItemDecorator
 import com.couplace.gofer.model.Product
 import com.couplace.gofer.productdetails.ProductDetailsActivity
@@ -80,6 +81,8 @@ class ProductActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         setContentView(R.layout.activity_product)
 
         AndroidInjection.inject(this)
+
+
 
         navController = Navigation.findNavController(this, R.id.navigation_graph)
 
@@ -208,6 +211,7 @@ class ProductActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
     private fun initRecyclerView() {
         productListRecycleView = findViewById(R.id.recycler_view)
+        EdgeToEdge.setUpScrollingContent(productListRecycleView)
 
         productListAdapter = ProductListAdapter(
             object : ProductListAdapter.Interaction {
@@ -290,6 +294,7 @@ class ProductActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
                     }
 
                     productListRecycleView.addOnScrollListener(scrollListener)
+
 
                 }
             }
