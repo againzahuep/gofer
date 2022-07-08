@@ -283,12 +283,12 @@ class ProductActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
                             override fun run() {
                                 progressIndicator.hide()
                                 populateList(it)
-                                productListAdapter.notifyItemRangeInserted(page,allProducts.size - 1)
+                                productListAdapter.notifyItemRangeInserted(page,page*10)
                             }
                         })
                     }
 
-                    productListRecycleView.addOnScrollListener(scrollListener);
+                    productListRecycleView.addOnScrollListener(scrollListener)
 
                 }
             }
