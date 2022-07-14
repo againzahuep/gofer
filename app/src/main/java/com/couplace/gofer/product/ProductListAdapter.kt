@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -49,7 +48,7 @@ class ProductListAdapter( private val interaction: Interaction) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
 
-        viewItem = inflater.inflate(R.layout.recyclerview_adapter_items, parent, false);
+        viewItem = inflater.inflate(R.layout.items_recyclerview_adapter, parent, false);
 
         return ProductViewHolder(viewItem, interaction)
     }

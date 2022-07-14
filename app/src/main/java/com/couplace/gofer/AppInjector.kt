@@ -30,7 +30,7 @@ import dagger.android.support.HasSupportFragmentInjector
  * Helper class to automatically inject fragments if they implement [Injectable].
  */
 object AppInjector {
-    fun init(application: App) {
+    fun init(application: GoferApplication) {
         DaggerAppComponent
             .builder().application(application)
             .build().inject(application)

@@ -6,10 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.*
 import android.widget.LinearLayout
-import android.widget.Toolbar
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.view.menu.MenuAdapter
 import androidx.core.os.bundleOf
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -23,25 +20,28 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.*
+import com.couplace.gofer.GoferApplication
 import com.couplace.gofer.R
 import com.couplace.gofer.auth.FacebookLoginActivity
 import com.couplace.gofer.decorator.EdgeToEdge
 import com.couplace.gofer.decorator.FixedMarginItemDecorator
+import com.couplace.gofer.di.component.ActivityComponent
+import com.couplace.gofer.di.module.ActivityModule
 import com.couplace.gofer.model.Product
 import com.couplace.gofer.productdetails.ProductDetailsActivity
-import com.couplace.gofer.repository.DataRepository
+import com.couplace.gofer.repository.DataRepositoryImpl
 import com.couplace.gofer.utils.Utils
-import com.couplace.gofer.viewmodel.ViewModelProviderFactory
 import com.firebase.ui.auth.AuthUI
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.progressindicator.CircularProgressIndicator
 import com.google.firebase.auth.FirebaseAuth
 import com.velmurugan.mvvmwithkotlincoroutinesandretrofit.MyViewModelFactory
 import dagger.android.AndroidInjection
+import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
 
-class ProductActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class ProductActivity : DaggerAppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var toolbar: androidx.appcompat.widget.Toolbar
     private var isFirstTime: Boolean = false
@@ -73,7 +73,22 @@ class ProductActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
     lateinit var allProducts: List<Product>
 
     @Inject
-    lateinit var dataRepository : DataRepository
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    @Inject
+    lateinit var dataRepository : DataRepositoryImpl
+
+    private var activityComponent: ActivityComponent? = null
+
+    fun getActivityComponent(): ActivityComponent? {
+        if (activityComponent == null) {
+            activityComponent = DaggerProductActivityComponent.builder()
+                .activityModule(ActivityModule(this))
+                .applicationComponent(GoferApplication.get(this).getComponent())
+                .build()
+        }
+        return activityComponent
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -108,7 +123,7 @@ class ProductActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         navigationView.setCheckedItem(R.id.drawer_nav_profile);
         navigationView.setNavigationItemSelectedListener(this)
 
-
+//        viewModel = ViewModelProviders.of(this, viewModelFactory).get(ProductViewModel::class.java)
 
         viewModel = ViewModelProvider(this,  MyViewModelFactory(dataRepository)).get(ProductViewModel::class.java)
 
@@ -122,12 +137,15 @@ class ProductActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
                 progressCircleDeterminate.visibility = View.GONE
             }
         })
-        initRecyclerView()
 
-        viewModel.fetchData().observe(this) {
+        viewModel.products.observe(this) {
             isFirstTime = true
             populateList(it)
         }
+
+        viewModel.fetchData()
+
+        initRecyclerView()
 
     }
 
@@ -208,6 +226,8 @@ class ProductActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
             drawerLayout
         )
     }
+
+
 
     private fun initRecyclerView() {
         productListRecycleView = findViewById(R.id.recycler_view)

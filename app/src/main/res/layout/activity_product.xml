@@ -57,7 +57,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:id="@+id/recycler_view"
-				tools:listitem="@layout/recyclerview_adapter_items"
+				tools:listitem="@layout/items_recyclerview_adapter"
 				tools:itemCount="10"
 				app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
 				app:spanCount="2"

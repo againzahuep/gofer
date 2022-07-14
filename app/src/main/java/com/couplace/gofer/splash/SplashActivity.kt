@@ -7,29 +7,20 @@ import android.os.Handler
 import android.os.Looper
 import com.couplace.gofer.R
 import com.couplace.gofer.auth.FacebookLoginActivity
+import com.couplace.gofer.product.ProductActivity
 import com.google.android.material.navigation.NavigationView
 import timber.log.Timber
 
 
 class SplashActivity : AppCompatActivity(){
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        Handler(Looper.getMainLooper()).post {
+        startActivity(Intent(this, ProductActivity::class.java))
+        finish()
 
-            // Start activity
-            startActivity(Intent(this, FacebookLoginActivity::class.java))
-
-            // Animate the loading of new activity
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-
-            // Close this activity
-            finish()
-
-        }
 
     }
 

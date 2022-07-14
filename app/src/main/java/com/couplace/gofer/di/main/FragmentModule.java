@@ -7,9 +7,8 @@ import com.couplace.gofer.setting.SettingsFragment;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
-
 @Module
-public abstract class MainFragmentBuildersModule {
+public abstract class FragmentModule {
 
     @ContributesAndroidInjector
     abstract FavoriteProductsFragment contributeFavoriteProductsFragment();

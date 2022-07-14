@@ -4,8 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.couplace.gofer.product.ProductViewModel
 import com.couplace.gofer.repository.DataRepository
+import com.couplace.gofer.repository.DataRepositoryImpl
 
-class MyViewModelFactory constructor(private val repository: DataRepository): ViewModelProvider.Factory {
+class MyViewModelFactory constructor(private val repository: DataRepositoryImpl): ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return if (modelClass.isAssignableFrom(ProductViewModel::class.java)) {

@@ -14,9 +14,6 @@ package="com.couplace.gofer">
 <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
 <uses-feature
-    android:glEsVersion="0x00020000"
-    android:required="false" />
-<uses-feature
     android:name="android.hardware.telephony"
     android:required="false" />
 <uses-feature
@@ -34,7 +31,7 @@ package="com.couplace.gofer">
 
 <application
     android:usesCleartextTraffic="true"
-    android:name=".App"
+    android:name=".GoferApplication"
     android:hardwareAccelerated="true"
     android:largeHeap="true"
     tools:replace="android:supportsRtl"
@@ -82,11 +79,7 @@ package="com.couplace.gofer">
     <activity
         android:name="com.couplace.gofer.splash.SplashActivity"
         android:exported="true"
-        tools:node="merge"
         android:screenOrientation="fullSensor"
-        android:clearTaskOnLaunch="true"
-        android:launchMode="singleTop"
-        android:vmSafeMode="true"
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute"
         android:theme="@style/AppTheme.NoActionBar">
         <intent-filter>

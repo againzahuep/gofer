@@ -14,4 +14,5 @@
     <dimen name="span2">2dp</dimen>
     <dimen name="span58">58dp</dimen>
     <dimen name="span18">18dp</dimen>
+    <dimen name="spacing_medium">16dp</dimen>
 </resources>

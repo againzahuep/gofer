@@ -22,9 +22,8 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.updatePadding
-import com.example.android.motion.R
 import com.google.android.material.appbar.AppBarLayout
-
+import com.couplace.gofer.R
 /**
  * A utility for edge-to-edge display. It provides several features needed to make the app
  * displayed edge-to-edge on Android Q with gestural navigation.
